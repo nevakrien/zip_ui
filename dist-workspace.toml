@@ -1,56 +1,11 @@
-# The version of the schema to use
-schema-version: 1
-
-# Project configuration
-project:
-  name: zip-gui
-  owners:
-    - user
-
-# Build configuration
-build:
-  # Target platforms to build for
-  targets:
-    - x86_64-pc-windows-msvc
-    - x86_64-apple-darwin
-    - x86_64-unknown-linux-gnu
-    - aarch64-apple-darwin
-  
-  # CI configuration
-  ci:
-    github:
-      # Enable GitHub Actions
-      workflows:
-        - path: .github/workflows/ci.yml
-          # When to run this workflow
-          on:
-            push:
-              branches:
-                - main
-            pull_request:
-              branches:
-                - main
-          # Environment variables
-          env:
-            # Disable some features for faster builds
-            RUSTFLAGS: "-C target-cpu=generic"
-
-# Distribution configuration
-dist:
-  # Artifacts to create
-  artifacts:
-    # Main executable
-    - bin: zip_gui
-      # Target-specific naming
-      target:
-        x86_64-pc-windows-msvc: zip-gui.exe
-        x86_64-apple-darwin: zip-gui
-        x86_64-unknown-linux-gnu: zip-gui
-        aarch64-apple-darwin: zip-gui
-  
-  # Archive format
-  archive:
-    format: tar.gz
-    # Windows-specific format
-    target:
-      x86_64-pc-windows-msvc: zip
+[dist]
+cargo-dist-version = "0.12.0"
+ci = ["github"]
+installers = ["shell", "powershell"]
+pr-run-mode = "plan"
+targets = [
+    "x86_64-pc-windows-msvc",
+    "x86_64-unknown-linux-gnu",
+    "x86_64-apple-darwin",
+    "aarch64-apple-darwin",
+]

@@ -1,7 +1,8 @@
 [package]
 name = "zip_gui"
-version = "0.1.0"
+version = "0.0.1"
 edition = "2021"
+repository = "https://github.com/nevakrien/zip_ui"
 
 [[bin]]
 name = "zip_gui"
@@ -17,3 +18,18 @@ eframe = { version = "0.27.0", default-features = false, features = [
 rfd = "0.14.0"
 zip = "0.6.6"
 walkdir = "2.4.0"
+
+[workspace]
+members = ["."]
+
+[workspace.metadata.dist]
+cargo-dist-version = "0.12.0"
+ci = ["github"]
+installers = ["shell", "powershell"]
+pr-run-mode = "plan"
+targets = [
+    "x86_64-pc-windows-msvc",
+    "x86_64-unknown-linux-gnu",
+    "x86_64-apple-darwin",
+    "aarch64-apple-darwin",
+]
