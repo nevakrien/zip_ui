@@ -19,6 +19,9 @@ rfd = "0.14.0"
 zip = "0.6.6"
 walkdir = "2.4.0"
 
+[profile.dist]
+inherits = "release"
+
 [workspace]
 members = ["."]
 
@@ -33,3 +36,4 @@ targets = [
     "x86_64-apple-darwin",
     "aarch64-apple-darwin",
 ]
+
